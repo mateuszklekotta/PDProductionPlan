@@ -2,6 +2,7 @@ import pyodbc
 import pandas as pd
 
 import ProdTableQuery
+import convertDateTime
 
 print(pyodbc.drivers())
 
@@ -14,3 +15,5 @@ cursor = cnxn.cursor()
 data = pd.read_sql(ProdTableQuery.QueryString, cnxn)
 print(data)
 print(type(data))
+print(data["StartTime"])
+print(convertDateTime.convert(0, data["StartTime"], data["PROD_TIME"]))
